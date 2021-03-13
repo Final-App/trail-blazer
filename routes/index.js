@@ -12,10 +12,11 @@ const db = require('../models')
 //   })
 // })
 
-//Route to post brewery to crawl.
-router.post("/api/??????",  function(req, res){
-  db.Crawl.create(req.body).then(function(results){
+//Route to put brewery to crawl.
+router.put("/api/user/crawl/:id",  function(req, res){
+  db.Crawl.update(req.body).then(function(results){
       res.json(results)
+      
   })
 })
 
