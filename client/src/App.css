@@ -1,9 +1,22 @@
 body {
   /* margin-top: 60px;
   scroll-padding-top: 60px; */
+  color: white;
   background: rgb(80,80,100);
   background: linear-gradient(140deg, rgba(80,80,100,1) 0%, rgba(0,0,50,1) 50%, rgba(0,0,36,1) 100%);
   background-attachment: fixed;
+}
+
+.search-and-save-container {
+  display: flex;
+}
+
+.search-container {
+  width: 50%;
+}
+
+.selected-container {
+  width: 50%;
 }
 
 .brewery-item {
