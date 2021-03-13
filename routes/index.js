@@ -1,7 +1,7 @@
 const path = require('path');
 const router = require('express').Router();
 const axios = require("axios")
-
+const db = require('../models')
 
 // router.use("api")
 
@@ -12,6 +12,12 @@ const axios = require("axios")
 //   })
 // })
 
+//Route to post brewery to crawl.
+router.post("/api/??????",  function(req, res){
+  db.Crawl.create(req.body).then(function(results){
+      res.json(results)
+  })
+})
 
 // If no API routes are hit, send the React app
 router.use(function (req, res) {

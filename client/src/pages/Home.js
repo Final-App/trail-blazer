@@ -24,10 +24,18 @@ function Home() {
         })
     }
 
-    // const handleSelectBrewery
+    const handleSelectBrewery = brewery => {
+        const newBrewery = {
+            brewery_id: brewery.id
+        }
+        api.selectBrewery(newBrewery).then(results =>{
+            console.log(results)
+        })
+    }
 
     return (
-        <>
+        <div class="search-and-save-container">
+        <div class="search-container">
         <p>SEARCH</p>
         <Searchbar searchTerm={searchTerm} handleInput={handleInput}  handleSubmit={handleSubmit}/>
         <div className="search-results">
@@ -35,12 +43,16 @@ function Home() {
             return (
                     <SearchItem 
                         brewery={brewery}
-                        // handleSelectBrewery={handleSelectBrewery}
+                        handleSelectBrewery={handleSelectBrewery}
                     />
             )
         }) : "No breweries found" }
         </div>
-        </>
+        </div>
+        <div class="selected-container">
+            <p>Selected</p>
+        </div>
+        </div>
     )
 
 }
