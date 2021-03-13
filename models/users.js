@@ -2,7 +2,10 @@ module.exports = function (sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
     },
     password: {
       type: DataTypes.STRING,
@@ -13,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Last_name: {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -22,5 +25,14 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  // hasOne Crawl
+  Users.associate = function(models) {
+      Users.hasOne(models.Crawl,{ 
+        foreignKey: "CrawlId",
+        targetKey: "id"
+      })
+    }
+
   return Users;
 };
