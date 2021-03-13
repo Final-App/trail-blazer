@@ -1,25 +1,22 @@
 module.exports = function (sequelize, DataTypes) {
     var Crawl = sequelize.define("Crawl", {
-      CrawlName: DataTypes.STRING,
-      notEmpty: true,
+      crawlName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
 
     });
   
-    Crawl.associate = function (models) {
-      Crawl.belongsTo(models.Users, {
-        foreignKey: {
-          allowNull: false
-        },
-      });
-      Crawl.hasMany(models.Brewery,{
-          
+    // belongsTo User
+    Crawl.associate = function(models) {
+      Crawl.belongsTo(models.Users,{ 
+        foreignKey: "UserId",
       })
-      Crawl.belongsTo(models.Brewery,{
-        foreignKey: "BreweryId",
-        targetKey: "id"
-      })
+    }
 
-    };
+  
+
+    // };
 
     
     return Crawl;

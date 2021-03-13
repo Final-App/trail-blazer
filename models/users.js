@@ -1,29 +1,38 @@
 module.exports = function (sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
-    Email: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isEmail: true
-    }
+      }
     },
-    Password: {
+    password: {
       type: DataTypes.STRING,
       defaultValue: false,
       allowNull: false
     },
-    First_name: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Last_name: {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    Date_of_birth: {
+    date_of_birth: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
+
+  // hasOne Crawl
+  Users.associate = function(models) {
+      Users.hasOne(models.Crawl,{ 
+        foreignKey: "CrawlId",
+        targetKey: "id"
+      })
+    }
+
   return Users;
 };
