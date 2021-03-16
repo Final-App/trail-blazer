@@ -5,7 +5,7 @@ import SearchItem from '../components/SearchItem'
 import api from '../utils/api'
 
 
-function Home() {
+function Dashboard() {
     const [searchTerm, setSearchTerm] = useState("")
     const [results, setResults] = useState([])
 
@@ -60,7 +60,7 @@ function Home() {
 
 
 
-export default Home
+export default Dashboard
 
 // brewery db search by city
 // https://api.openbrewerydb.org/breweries?by_city=chicago

@@ -1,9 +1,14 @@
 // dependencies
 const express = require('express');
+const session = require('express-session');
+const path = require('path');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const db = require('./models');
 const routes = require('./routes');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
-const db = require('./models');
 const environment = process.env.NODE_ENV || 'development';
 
 // Define middleware here
@@ -14,6 +19,10 @@ console.log(process.env.NODE_ENV);
 if (environment === 'production') {
   app.use(express.static('client/build'));
 }
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Add routes, both API and view
 app.use(routes);
 

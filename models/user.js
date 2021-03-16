@@ -1,5 +1,7 @@
+const bcrypt = require('bcryptjs');
+
 module.exports = function (sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var User = sequelize.define("User", {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,12 +29,20 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   // hasOne Crawl
-  Users.associate = function(models) {
-      Users.hasOne(models.Crawl,{ 
+  User.associate = function(models) {
+      User.hasOne(models.Crawl,{ 
         foreignKey: "CrawlId",
         targetKey: "id"
       })
-    }
+  }
 
-  return Users;
+  User.prototype.validPassword = function (password) {
+      return bcrypt.compareSync(password, this.password);
+  };
+  
+  User.addHook('beforeCreate', (user) => {
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
+
+  return User;
 };

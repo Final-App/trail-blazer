@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
   
     // belongsTo User
     Crawl.associate = function(models) {
-      Crawl.belongsTo(models.Users,{ 
+      Crawl.belongsTo(models.User,{ 
         foreignKey: "UserId",
       })
     }

@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom'
+import '../App.css';
+import { AuthContext } from '../AuthContext'
+import LoginForm from '../components/LoginForm'
 
-function Login() {
-    return (
-        <div className="login-item">
-            <form>
-                <label for="username">username:</label>
-                <input type="text" id="username" name="username" />
-                    <br/><br/>
-                    <label for="password">password:</label>
-                    <input type="text" id="password" name="password" />
-                    <br/><br/>
-                    <input type="submit" value="Submit" />
-            </form>
+function Login(props) {
+
+  const { isAuth } = useContext(AuthContext)
+
+  console.log("login auth: ", isAuth)
+
+  return (
+      isAuth ? <Redirect to='/dashboard' />
+        :
+        <div className="signup">
+              <LoginForm {...props}/>
         </div>
-    )
+  );
 }
 
-export default Login
+export default Login;
