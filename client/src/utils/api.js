@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export default {
     getAPI: function(city){
     // Proper method connecting to back end.
@@ -7,8 +8,11 @@ export default {
     // Testing method to be deleted after back end connnection.
     return axios.get("https://api.openbrewerydb.org/breweries?by_city="+city)
     },
-
-    selectBrewery: function(){
-        return axios.put("/api/user/crawl/:id")
+    selectBrewery: function(newBrewery){
+        return axios.post("/api/user/brewery", newBrewery)
+    }, 
+    
+    getallBrewery: function(){
+        return axios.get("/api/user/brewery")
     }
-}
+}-
