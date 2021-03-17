@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Crawl = sequelize.define("Crawl", {
+    const Crawl = sequelize.define("Crawl", {
       crawlName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
     // belongsTo User
     Crawl.associate = function(models) {
       Crawl.belongsTo(models.Users,{ 
-        foreignKey: "UserId",
+        foreignKey: "id",
       })
     }
 

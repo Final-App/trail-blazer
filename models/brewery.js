@@ -1,15 +1,15 @@
 module.exports = function (sequelize, DataTypes) {
-    var Brewery = sequelize.define('Brewery', {
-        Name: {
+    const Brewery = sequelize.define('Brewery', {
+        name: {
             type: DataTypes.STRING,
             allowNull: true,
 
         },
-        Street: {
+        street: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Postal_Code: {
+        postalCode: {
             type: DataTypes.STRING,
             allowNull: false
         }
