@@ -15,4 +15,4 @@ export default {
     getallBrewery: function(){
         return axios.get("/api/user/brewery")
     }
-}-
+}
