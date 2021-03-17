@@ -13,10 +13,14 @@ module.exports = function (sequelize, DataTypes) {
         foreignKey: "UserId",
       })
     }
+    // belongsToMany Brewery
+    Crawl.associate = function(models) {
+      Crawl.hasMany(models.Brewery, {
+        foreignKey: "breweryId"
+      })
+    }
 
-  
 
-    // };
 
     
     return Crawl;

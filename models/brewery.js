@@ -17,9 +17,6 @@ module.exports = function (sequelize, DataTypes) {
 
     });
 
-    // belongsToMany Crawl
-
-    
     return Brewery;
 
     };
