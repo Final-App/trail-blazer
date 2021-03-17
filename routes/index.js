@@ -15,12 +15,24 @@ const isAuthenticated = require('../config/middleware/isAuthenticated');
 // })
 
 //Route to put brewery to crawl.
-router.put("/api/user/crawl/:id",  function(req, res){
-  db.Crawl.update(req.body).then(function(results){
+router.post("/api/user/brewery",  function(req, res){
+  console.log(req.body)
+  db.Brewery.create( {
+    Name: req.body.name,
+    Street: req.body.street,
+    Postal_Code: req.body.postal_code
+  } ).then(function(results){
       res.json(results)
       
   })
 })
+router.get("/api/user/brewery", function(req, res){
+  db.Brewery.findAll().then(function(data){
+    res.json(data)
+  })
+})
+
+
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   console.log(req);

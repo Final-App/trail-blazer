@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect} from "react";
 import Searchbar from '../components/Searchbar'
 import SearchItem from '../components/SearchItem'
 import api from '../utils/api'
-
-
 function Dashboard() {
     const [searchTerm, setSearchTerm] = useState("")
     const [results, setResults] = useState([])
-
-
+    const [brewery, setBrewery] = useState([])
     const handleInput = event => {
         const {value} = event.target
         setSearchTerm(value)
         console.log(value)
     }
-
     const handleSubmit = event => {
         event.preventDefault()
         api.getAPI(searchTerm).then(results => {
@@ -23,15 +18,21 @@ function Dashboard() {
             setResults(results.data)
         })
     }
-
     const handleSelectBrewery = brewery => {
-        const newBrewery = {
-            brewery_id: brewery.id
-        }
-        api.selectBrewery(newBrewery).then(results =>{
+         
+        api.selectBrewery(brewery).then(results =>{
             console.log(results)
+            api.getallBrewery().then(brewery =>{
+                setBrewery(brewery.data)
+            })
         })
     }
+    /*useEffect(()=> {
+        api.getallBrewery().then(brewery =>{
+            setBrewery(brewery.data)
+        })
+     
+    })*/
 
     return (
         <div class="search-and-save-container">
@@ -51,16 +52,20 @@ function Dashboard() {
         </div>
         <div class="selected-container">
             <p>Selected</p>
+                
+           {console.log(brewery)}
+           {brewery.length > 0 ? brewery.map(breweries =>{
+            return (
+                    <SearchItem 
+                        brewery={breweries}
+            
+                    />
+            )
+        }) : "No breweries found" }
         </div>
         </div>
     )
-
 }
-
-
-
-
 export default Dashboard
-
 // brewery db search by city
 // https://api.openbrewerydb.org/breweries?by_city=chicago
