@@ -10,13 +10,13 @@ module.exports = function (sequelize, DataTypes) {
     // belongsTo User
     Crawl.associate = function(models) {
       Crawl.belongsTo(models.User,{ 
-        foreignKey: "UserId",
+        foreignKey: "id",
       })
     }
     // belongsToMany Brewery
     Crawl.associate = function(models) {
       Crawl.hasMany(models.Brewery, {
-        foreignKey: "breweryId"
+        foreignKey: "id"
       })
     }
 
