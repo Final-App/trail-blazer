@@ -32,8 +32,6 @@ router.get("/api/user/brewery", function(req, res){
   })
 })
 
-
-
 router.post('/login', passport.authenticate('local'), (req, res) => {
   console.log(req);
   res.json(req.user);
@@ -61,7 +59,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/user_data', (req, res) => {
-  if (!req.user) {
+  if (!req.user) { 
     res.json({});
   } else {
 

@@ -6,6 +6,7 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Header from "./Header"
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
 export default () => {
   return (
     <AuthProvider>
+      <Header />
       <App />
     </AuthProvider>
   );
