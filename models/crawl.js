@@ -7,21 +7,11 @@ module.exports = function (sequelize, DataTypes) {
 
     });
   
-    // belongsTo User
     Crawl.associate = function(models) {
       Crawl.belongsTo(models.User,{ 
-        foreignKey: "id",
+        foreignKey: "UserId",
       })
     }
-    // belongsToMany Brewery
-    Crawl.associate = function(models) {
-      Crawl.hasMany(models.Brewery, {
-        foreignKey: "id"
-      })
-    }
-
-
-
     
     return Crawl;
   };

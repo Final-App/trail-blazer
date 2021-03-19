@@ -3,7 +3,6 @@ module.exports = function (sequelize, DataTypes) {
         Name: {
             type: DataTypes.STRING,
             allowNull: true,
-
         },
         Street: {
             type: DataTypes.STRING,
@@ -13,9 +12,13 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         }
-
-
     });
+
+    Brewery.associate = function(models) {
+        Brewery.hasMany(models.Crawl,{ 
+          foreignKey: "BreweryId",
+        })
+    }
 
     return Brewery;
 
