@@ -28,14 +28,6 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  // hasOne Crawl
-  User.associate = function(models) {
-      User.hasOne(models.Crawl,{ 
-        foreignKey: "CrawlId",
-        targetKey: "id"
-      })
-  }
-
   User.prototype.validPassword = function (password) {
       return bcrypt.compareSync(password, this.password);
   };
