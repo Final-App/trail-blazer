@@ -26,6 +26,7 @@ router.post("/api/user/brewery",  function(req, res){
       
   })
 })
+
 router.get("/api/user/brewery", function(req, res){
   db.Brewery.findAll().then(function(data){
     res.json(data)
@@ -62,7 +63,6 @@ router.get('/user_data', (req, res) => {
   if (!req.user) { 
     res.json({});
   } else {
-
     res.json({
       email: req.user.email,
       id: req.user.id,
