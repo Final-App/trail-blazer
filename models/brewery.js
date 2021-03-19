@@ -14,11 +14,6 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Brewery.associate = function(models) {
-        Brewery.hasMany(models.Crawl,{ 
-          foreignKey: "BreweryId",
-        })
-    }
 
     return Brewery;
 
