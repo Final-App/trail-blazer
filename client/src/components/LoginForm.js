@@ -5,7 +5,7 @@ import AlertBox from './AlertBox'
 import Button from '@material-ui/core/Button';
 
 const LoginForm = props => {
-    const { setIsAuth } = useContext(AuthContext)
+    const { setIsAuth, setCurrentUser } = useContext(AuthContext)
     const emptyCreds = { email: '', password: '' }
     const errorMessage = ['Login credentials are invalid.']
     const [formData, setFormData] = useState(emptyCreds)
@@ -32,6 +32,7 @@ const LoginForm = props => {
             .then(user => {
                 console.log("login response ", user)
                 setIsAuth(true)
+                setCurrentUser(user.data)
             })
             .catch(err => {
                 setCredsAreInvalid(errorMessage)

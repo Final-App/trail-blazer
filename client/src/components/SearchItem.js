@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 
 function SearchItem(props) {
-    console.log(props.brewery)
+    //console.log(props.brewery)
     return (
         <div>
             {props.brewery.Name?(

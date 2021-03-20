@@ -10,18 +10,18 @@ function Dashboard() {
     const handleInput = event => {
         const {value} = event.target
         setSearchTerm(value)
-        console.log(value)
+        //console.log(value)
     }
     const handleSubmit = event => {
         event.preventDefault()
         api.getAPI(searchTerm).then(results => {
-            console.log(results)
+            //console.log(results)
             setResults(results.data)
         })
     }
     const handleSelectBrewery = brewery => {
         api.selectBrewery(brewery).then(results =>{
-            console.log(results)
+            //console.log(results)
             api.getallBrewery().then(brewery =>{
                 setBrewery(brewery.data)
             })
@@ -64,7 +64,6 @@ function Dashboard() {
                 <div className="selected-container column">
                 <h3>My Selected Breweries</h3>
                         
-                {console.log(brewery)}
                 {brewery.length > 0 ? brewery.map(breweries =>{
                     return (
                             <SearchItem 

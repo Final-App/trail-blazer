@@ -7,13 +7,35 @@ body {
   font-family: 'Titillium Web', sans-serif
 }
 .app-header{
-  text-align:center;
-  margin-bottom:1px solid rgb(199, 199, 199);
   background-color:white;
+  display:flex;
   top:0;
   height:88px;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  padding:0px 25px;
 }
+.logged-in-header-content{
+  display:flex;
+  width:100%;
+}
+.logged-in-header-content button{
+  justify-content: flex-end;
+  margin-left:auto;
+}
+
+.user-greeting{
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+  font-weight:bold;
+  font-size:1.33rem;
+  color:#8a8a8a;
+  margin-top:-7px;
+}
+.app-header button{margin-right:1rem;}
 .search-and-save-container {
   padding:1rem 2.66rem;
 }
@@ -63,10 +85,11 @@ body {
 }
 
 .brewery-item {
+  background-color:white;
   opacity: 1;
   color: black;
   border-radius: 8px;
-  border: 3px solid black;
+  border: 2px solid #8a8a8a;
   padding: 12px;
   margin: 4px 20px 4px 0px;
   z-index: 3;
@@ -74,6 +97,10 @@ body {
 .brewery-item p{
   margin-top:3px;
   margin-bottom:3px;
+}
+.brewery-item h2{
+  color:#8a8a8a;
+  margin-bottom:5px;
 }
 .brewery-item h1,h2,h3{margin-top:0;}
 .signup{
