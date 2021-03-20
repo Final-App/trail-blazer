@@ -1,21 +1,18 @@
 const path = require('path');
 const router = require('express').Router();
-const axios = require("axios")
+const axios = require('axios')
 const db = require('../models')
 const passport = require('../config/passport');
 const isAuthenticated = require('../config/middleware/isAuthenticated');
-
-// router.use("api")
-
+// router.use(“api”)
 // Back end brewery search api call. a
-// router.get("/api/brewerysearch/:city", function(req, res) {
-//   axios.get("https://api.openbrewerydb.org/breweries?by_city="+req.params.city).then(function(results){
+// router.get(“/api/brewerysearch/:city”, function(req, res) {
+//   axios.get(“https://api.openbrewerydb.org/breweries?by_city=”+req.params.city).then(function(results){
 //       res.json(results.data.items)
 //   })
 // })
-
 //Route to put brewery to crawl.
-router.post("/api/user/brewery", isAuthenticated, function(req, res){
+router.post('/api/user/brewery', isAuthenticated, function(req, res){
   console.log(req.body)
   db.Brewery.create( {
     Name: req.body.name,
@@ -26,7 +23,7 @@ router.post("/api/user/brewery", isAuthenticated, function(req, res){
       res.json(results)
   })
 })
-
+router.get('/api/user/brewery',isAuthenticated, function(req, res){
   db.Brewery.findAll({
     where: {
       UserId: req.user.id
@@ -35,12 +32,11 @@ router.post("/api/user/brewery", isAuthenticated, function(req, res){
     console.log(data)
     res.json(data)
   })
-
+})
 router.post('/login', passport.authenticate('local'), (req, res) => {
   console.log(req);
   res.json(req.user);
 });
-
 router.post('/signup', (req, res) => {
   db.User.create({
     first_name: req.body.first_name,
@@ -56,14 +52,12 @@ router.post('/signup', (req, res) => {
       res.json(err);
     });
 });
-
 router.get('/logout', (req, res) => {
   req.logout();
   res.json('logout successful');
 });
-
 router.get('/user_data', (req, res) => {
-  if (!req.user) { 
+  if (!req.user) {
     res.json({});
   } else {
     res.json({
@@ -72,9 +66,7 @@ router.get('/user_data', (req, res) => {
     });
   }
 });
-
 router.get('/secrets', isAuthenticated, (req, res) => {
   res.json('if you see this, the user is authenticated via a check in /config/middleware/isAuthenticated');
 });
-
 module.exports = router
