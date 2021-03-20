@@ -9,6 +9,7 @@ function SearchItem(props) {
         <h2>{props.brewery.Name}</h2>
         <p>{props.brewery.Street}</p>
         <p>{props.brewery.Postal_Code}</p>    
+        <Button size="small" variant="outlined" onClick ={()=>{props.handleDeleteBrewery(props.brewery.id)}}>Delete</Button>
         </div>
             ) : (
                 <div className="brewery-item">

@@ -27,6 +27,14 @@ function Dashboard() {
             })
         })
     }
+    const handleDeleteBrewery = id => {
+        api.deleteBrewery(id).then(results =>{
+            console.log(results, "results from handle delete")
+            api.getallBrewery().then(brewery =>{
+                setBrewery(brewery.data)
+            })
+        })
+    }
     useEffect(()=> {
         api.getallBrewery().then(brewery =>{
             setBrewery(brewery.data)
@@ -61,6 +69,7 @@ function Dashboard() {
                     return (
                             <SearchItem 
                                 brewery={breweries}
+                                handleDeleteBrewery={handleDeleteBrewery}
                             />
                     )
                 }) : "No breweries found" }
