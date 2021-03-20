@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext";
 import "../App.css";
 import Axios from "axios";
+import Button from '@material-ui/core/Button';
 
 function Home(props) {
   
@@ -23,11 +24,11 @@ function Home(props) {
         </div>
         <div className="row">
         <div>
-            <button onClick={e => {e.preventDefault();setSecret('');logout();}}>Logout</button>
-            <button onClick={e => {e.preventDefault();props.history.push("/dashboard");}}>Dashboard</button>
-            <button onClick={e => {e.preventDefault();props.history.push("/login");}}>Login</button>
-            <button onClick={e => {e.preventDefault();props.history.push("/signup");}}>Signup</button>
-            <button onClick={e => {e.preventDefault();getSecret();}}>CheckAuth</button>
+            <Button onClick={e => {e.preventDefault();setSecret('');logout();}}>Logout</Button>
+            <Button onClick={e => {e.preventDefault();props.history.push("/dashboard");}}>Dashboard</Button>
+            <Button onClick={e => {e.preventDefault();props.history.push("/login");}}>Login</Button>
+            <Button onClick={e => {e.preventDefault();props.history.push("/signup");}}>Signup</Button>
+            <Button onClick={e => {e.preventDefault();getSecret();}}>CheckAuth</Button>
         </div>
         <p>{secret}</p>
       </div>

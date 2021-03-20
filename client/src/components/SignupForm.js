@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import AlertBox from './AlertBox'
+import Button from '@material-ui/core/Button';
 
 const Signup = props => {
 
@@ -103,14 +104,14 @@ const Signup = props => {
             <input name="date_of_birth" type="date" placeholder="Date" value={formData.date_of_birth} onChange={handleInputChange} />
 
             <br />
-            <button variant="primary" type="submit">
+            <Button variant="primary" type="submit">
                 Submit
-            </button>
+            </Button>
 
-            <button onClick={e => {
+            <Button onClick={e => {
                 e.preventDefault();
                 props.history.push('/')
-            }}>Home</button>
+            }}>Home</Button>
         </form>
         </div>
     )

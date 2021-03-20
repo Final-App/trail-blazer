@@ -1,18 +1,21 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 
 function Searchbar(props) {
     return (
         <form id="search-form" onSubmit={props.handleSubmit}>
             <label>Enter a city: </label>
-            <input type="text" placeholder="e.g. Chicago, Detroit" value={props.searchTerm} onChange={props.handleInput} />
-            <button type="submit">Search</button>
+            <TextField type="text" placeholder="e.g. Chicago, Detroit" value={props.searchTerm} onChange={props.handleInput} />
+            <Button type="submit">Search</Button>
         </form>
     )
 }
 
 export default Searchbar
 
-{/* <div>
+/*{/* <div>
 <form id="city-form">
     <label for="city">city:</label>
     <input 
@@ -25,4 +28,4 @@ export default Searchbar
     />
     <input type="submit" value="submit"/>
 </form>
-</div> */}
+</div> */

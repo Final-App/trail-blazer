@@ -1,3 +1,5 @@
+import Button from '@material-ui/core/Button';
+
 function SearchItem(props) {
     console.log(props.brewery)
     return (
@@ -15,7 +17,7 @@ function SearchItem(props) {
         <p>{props.brewery.city}, {props.brewery.state}  {props.brewery.postal_code}</p>
         <a href={props.brewery.website_url}>{props.brewery.website_url}</a>
         <br />
-        <button onClick ={()=>{props.handleSelectBrewery(props.brewery)}}>Select</button>
+        <Button size="small" variant="outlined" onClick ={()=>{props.handleSelectBrewery(props.brewery)}}>Select</Button>
         </div>
             )}
         
