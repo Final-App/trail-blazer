@@ -15,18 +15,15 @@ body {
   height:88px;
   box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
-
 .search-and-save-container {
   padding:1rem 2.66rem;
 }
-
 .row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
-
 .column {
   display: flex;
   flex-direction: column;
