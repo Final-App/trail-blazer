@@ -19,8 +19,8 @@ function Home(props) {
   return (
     <div className="signup">
       <div className="row">
-          <h1>Welcome</h1>
-          <p>This is a placeholder paragraph with some introductory information about the app, and some instructions for how to proceed.</p>
+          <h1>Welcome to Brew-Hopper</h1>
+          <p>Going on a trip or looking for your own local brew pubs? Brew-Hopper app helps you find your local brews and plan your night out.</p>
         </div>
         <div className="row">
         <div>
