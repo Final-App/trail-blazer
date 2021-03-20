@@ -2,11 +2,10 @@ import React from 'react'
 
 function Searchbar(props) {
     return (
-        <form onSubmit={props.handleSubmit}>
-        <div>
-            <input type="text" placeholder="Search by city." value={props.searchTerm} onChange={props.handleInput} />
+        <form id="search-form" onSubmit={props.handleSubmit}>
+            <label>Enter a city: </label>
+            <input type="text" placeholder="e.g. Chicago, Detroit" value={props.searchTerm} onChange={props.handleInput} />
             <button type="submit">Search</button>
-        </div>
         </form>
     )
 }

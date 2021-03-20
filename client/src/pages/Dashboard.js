@@ -19,7 +19,6 @@ function Dashboard() {
         })
     }
     const handleSelectBrewery = brewery => {
-         
         api.selectBrewery(brewery).then(results =>{
             console.log(results)
             api.getallBrewery().then(brewery =>{
@@ -30,39 +29,42 @@ function Dashboard() {
     useEffect(()=> {
         api.getallBrewery().then(brewery =>{
             setBrewery(brewery.data)
-        })
-     
+        }) 
     }, [])
+
 
     return (
         <div class="search-and-save-container">
-        <div class="search-container">
-        <p>SEARCH</p>
-        <Searchbar searchTerm={searchTerm} handleInput={handleInput}  handleSubmit={handleSubmit}/>
-        <div className="search-results">
-        {results.length > 0 ? results.map(brewery =>{
-            return (
-                    <SearchItem 
-                        brewery={brewery}
-                        handleSelectBrewery={handleSelectBrewery}
-                    />
-            )
-        }) : "No breweries found" }
-        </div>
-        </div>
-        <div class="selected-container">
-            <p>Selected</p>
-                
-           {console.log(brewery)}
-           {brewery.length > 0 ? brewery.map(breweries =>{
-            return (
-                    <SearchItem 
-                        brewery={breweries}
-            
-                    />
-            )
-        }) : "No breweries found" }
-        </div>
+            <div class="search-container row">
+                <Searchbar searchTerm={searchTerm} handleInput={handleInput}  handleSubmit={handleSubmit}/>
+            </div>
+            <div class="row">
+                <div className="search-results column">
+                <h3>Breweries Nearby</h3>
+                    {results.length > 0 ? results.map(brewery =>{
+                        return (
+                                <SearchItem 
+                                    brewery={brewery}
+                                    handleSelectBrewery={handleSelectBrewery}
+                                />
+                        )
+                    }) : 
+                    <div className="alertbox info">No results found.</div>
+                    }
+                </div>
+                <div className="selected-container column">
+                <h3>My Selected Breweries</h3>
+                        
+                {console.log(brewery)}
+                {brewery.length > 0 ? brewery.map(breweries =>{
+                    return (
+                            <SearchItem 
+                                brewery={breweries}
+                            />
+                    )
+                }) : "No breweries found" }
+                </div>
+            </div>
         </div>
     )
 }

@@ -24,22 +24,18 @@ router.post("/api/user/brewery", isAuthenticated, function(req, res){
     UserId: req.user.id
   } ).then(function(results){
       res.json(results)
-      
   })
 })
 
-router.get("/api/user/brewery",isAuthenticated, function(req, res){
-   
   db.Brewery.findAll({
     where: {
       UserId: req.user.id
     }
- 
   }).then(function(data){
     console.log(data)
     res.json(data)
   })
-})
+});
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   console.log(req);
