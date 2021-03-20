@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../AuthContext';
 import Axios from 'axios';
 import AlertBox from './AlertBox'
+import Button from '@material-ui/core/Button';
 
 const LoginForm = props => {
     const { setIsAuth } = useContext(AuthContext)
@@ -55,15 +56,15 @@ const LoginForm = props => {
             <label>Email address</label>
             <input name="email" type="email" placeholder="Enter email" value={formData.email} onChange={handleInputChange} />
             <input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleInputChange} />
-            <button type="submit">Submit</button>
-            <button onClick={e => {
+            <Button type="submit">Submit</Button>
+            <Button onClick={e => {
                 e.preventDefault();
                 props.history.push('/signup')
-            }}>Signup</button>
-            <button onClick={e => {
+            }}>Signup</Button>
+            <Button onClick={e => {
                 e.preventDefault();
                 props.history.push('/')
-            }}>Home</button>
+            }}>Home</Button>
         </form>
     </div>
     )

@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import Searchbar from '../components/Searchbar'
 import SearchItem from '../components/SearchItem'
 import api from '../utils/api'
+
 function Dashboard() {
     const [searchTerm, setSearchTerm] = useState("")
     const [results, setResults] = useState([])
