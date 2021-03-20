@@ -64,8 +64,13 @@ body {
 }
 
 .brewery-item {
-border:1px solid gray;
-border-radius:8px;
+  opacity: 1;
+  color: black;
+  border-radius: 10px;
+  border: 5px solid black;
+  padding: 20px;
+  margin: 20px;
+  z-index: 3;
 }
 .brewery-item p{
   margin-top:3px;

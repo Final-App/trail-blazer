@@ -29,8 +29,9 @@ function Dashboard() {
     useEffect(()=> {
         api.getallBrewery().then(brewery =>{
             setBrewery(brewery.data)
-        })
-    })
+        }) 
+    }, [])
+
 
     return (
         <div class="search-and-save-container">
