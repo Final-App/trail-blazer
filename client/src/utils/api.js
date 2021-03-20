@@ -11,7 +11,9 @@ export default {
     selectBrewery: function(newBrewery){
         return axios.post("/api/user/brewery", newBrewery)
     }, 
-    
+    deleteBrewery: function(id){
+        return axios.delete("/api/user/brewery/" + id)
+    },
     getallBrewery: function(){
         return axios.get("/api/user/brewery")
     }
