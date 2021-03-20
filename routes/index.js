@@ -35,7 +35,6 @@ router.post("/api/user/brewery", isAuthenticated, function(req, res){
     console.log(data)
     res.json(data)
   })
-});
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   console.log(req);
