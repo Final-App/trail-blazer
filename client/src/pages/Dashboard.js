@@ -47,7 +47,7 @@ function Dashboard() {
             <div class="search-container row">
                 <Searchbar searchTerm={searchTerm} handleInput={handleInput}  handleSubmit={handleSubmit}/>
             </div>
-            <div class="row">
+            <div class="search-results-and-selected row">
                 <div className="search-results column">
                 <h3>Breweries Nearby</h3>
                     {results.length > 0 ? results.map(brewery =>{
