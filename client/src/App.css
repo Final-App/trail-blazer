@@ -30,8 +30,13 @@ body {
   flex-basis: 100%;
   flex: 1;
 }
+.search-results-and-selected{
+  height: 75vh;
+}
 .search-results,.selected-container{
   margin: 0.33rem 1.8rem;
+  height: 100%;
+  overflow-y: auto;
 }
 .search-container {
 }
