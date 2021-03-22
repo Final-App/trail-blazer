@@ -1,12 +1,16 @@
 import React, { useState, useEffect} from "react";
 import Searchbar from '../components/Searchbar'
 import SearchItem from '../components/SearchItem'
+import Button from '@material-ui/core/Button';
 import api from '../utils/api'
 
 function Dashboard() {
+
     const [searchTerm, setSearchTerm] = useState("")
     const [results, setResults] = useState([])
     const [brewery, setBrewery] = useState([])
+    const [resultCount, setResultCount] = useState(-100);
+
     const handleInput = event => {
         const {value} = event.target
         setSearchTerm(value)
@@ -15,7 +19,7 @@ function Dashboard() {
     const handleSubmit = event => {
         event.preventDefault()
         api.getAPI(searchTerm).then(results => {
-            //console.log(results)
+            results.data.length > 0 ? setResultCount(results.data.length) : setResultCount(0)
             setResults(results.data)
         })
     }
@@ -41,15 +45,25 @@ function Dashboard() {
         }) 
     }, [])
 
+    //i want to display a message, conditionally:
+    //if the user hasnt searched yet, encourage them to do so
+    //if the user has searched and no results come back, give them an error
 
     return (
-        <div class="search-and-save-container">
-            <div class="search-container row">
-                <Searchbar searchTerm={searchTerm} handleInput={handleInput}  handleSubmit={handleSubmit}/>
-            </div>
-            <div class="row">
-                <div className="search-results column">
-                <h3>Breweries Nearby</h3>
+       
+        <div className="brew-wrapper">
+             {console.log(brewery)}
+            <div className="search-by-city column">
+                <div className="row">
+                    <h2>Find nearby breweries:</h2>
+                </div>
+                <div className="row search-container">
+                    <Searchbar 
+                        searchTerm={searchTerm} 
+                        handleInput={handleInput}  
+                        handleSubmit={handleSubmit}/>
+                </div>
+                <div class="row">
                     {results.length > 0 ? results.map(brewery =>{
                         return (
                                 <SearchItem 
@@ -57,26 +71,28 @@ function Dashboard() {
                                     handleSelectBrewery={handleSelectBrewery}
                                 />
                         )
-                    }) : 
-                    <div className="alertbox info">No results found.</div>
+                    }) : searchTerm.length == 0 ? <div className="alertbox big-gray">Brewery results will appear here.</div> : null
+                    }
+                    {resultCount == 0 ?  
+                        <div className="alertbox error">No results found. Try a different city.</div> : null
                     }
                 </div>
-                <div className="selected-container column">
-                <h3>My Selected Breweries</h3>
-                        
-                {brewery.length > 0 ? brewery.map(breweries =>{
+                </div>
+                <div className="my-saved-breweries column">
+                <h2>My Saved Brewery List</h2>
+                <div>
+                {console.log(brewery)}{
+                brewery.length > 0 ? brewery.map(breweries =>{
                     return (
                             <SearchItem 
                                 brewery={breweries}
-                                handleDeleteBrewery={handleDeleteBrewery}
-                            />
-                    )
-                }) : "No breweries found" }
+                                handleDeleteBrewery={handleDeleteBrewery}/>
+                    )})
+                : <div className="alertbox info">No saved breweries.</div>
+               }
+                </div>
                 </div>
             </div>
-        </div>
-    )
+        )
 }
 export default Dashboard
-// brewery db search by city
-// https://api.openbrewerydb.org/breweries?by_city=chicago

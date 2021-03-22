@@ -84,7 +84,8 @@ const Signup = props => {
 
     return (
         <div>
-    
+        <h2>Signup</h2>
+        
         {renderErrors()}
 
         <form onSubmit={handleFormSubmit}>
@@ -104,14 +105,14 @@ const Signup = props => {
             <input name="date_of_birth" type="date" placeholder="Date" value={formData.date_of_birth} onChange={handleInputChange} />
 
             <br />
-            <Button variant="primary" type="submit">
+            <Button variant="contained" color="primary" type="submit">
                 Submit
             </Button>
 
             <Button onClick={e => {
                 e.preventDefault();
                 props.history.push('/')
-            }}>Home</Button>
+            }}>Back</Button>
         </form>
         </div>
     )

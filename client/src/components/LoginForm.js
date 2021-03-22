@@ -50,22 +50,26 @@ const LoginForm = props => {
 
     return (
         <div>
-
+        <h2>Login</h2>
+        
         {renderErrors()}
 
         <form onSubmit={handleFormSubmit}>
             <label>Email address</label>
             <input name="email" type="email" placeholder="Enter email" value={formData.email} onChange={handleInputChange} />
+            <label>Password:</label>
             <input name="password" type="password" placeholder="Password" value={formData.password} onChange={handleInputChange} />
-            <Button type="submit">Submit</Button>
-            <Button onClick={e => {
-                e.preventDefault();
-                props.history.push('/signup')
-            }}>Signup</Button>
-            <Button onClick={e => {
-                e.preventDefault();
-                props.history.push('/')
-            }}>Home</Button>
+            <div className="button-area">
+                <Button variant="contained" color="primary" type="submit">Login</Button>
+                <Button variant="contained" color="primary" onClick={e => {
+                    e.preventDefault();
+                    props.history.push('/signup')
+                }}>Signup</Button>
+                <Button onClick={e => {
+                    e.preventDefault();
+                    props.history.push('/')
+                }}>Back</Button>
+            </div>
         </form>
     </div>
     )
