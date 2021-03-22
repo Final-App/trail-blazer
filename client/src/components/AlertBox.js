@@ -1,6 +1,6 @@
 function AlertBox(props){
     return(
-    <div className={`alertbox ${props.type}`}>
+    <div className={`row alertbox ${props.type}`}>
     {
         props.messages.map(e => {
             return (<li>{e}</li>)

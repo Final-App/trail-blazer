@@ -14,6 +14,10 @@ const environment = process.env.NODE_ENV || 'development';
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
  
 // Serve up static assets (usually on heroku)
 console.log(process.env.NODE_ENV);

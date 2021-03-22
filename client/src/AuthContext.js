@@ -6,6 +6,7 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuth, setIsAuth] = useState(false)
+    const [currentUser, setCurrentUser] = useState({id:'', first_name:'',last_name:'',email:''});
 
     useEffect(() => {
         checkAuth()
@@ -16,6 +17,12 @@ export const AuthProvider = ({ children }) => {
             .then(response => {
                 if (response.data.email) {
                     setIsAuth(true)
+                    setCurrentUser({
+                        id: response.data.id,
+                        first_name: response.data.first_name,
+                        last_name: response.data.last_name,
+                        email: response.data.email
+                    })
                 } else {
                     setIsAuth(false)
             }
@@ -31,5 +38,5 @@ export const AuthProvider = ({ children }) => {
           .catch(err => console.log(err));
       };
 
-    return <AuthContext.Provider value={{ isAuth, setIsAuth, checkAuth, logout }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ isAuth, setIsAuth, checkAuth, logout, currentUser, setCurrentUser }}>{children}</AuthContext.Provider>;
 };

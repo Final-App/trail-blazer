@@ -10,8 +10,7 @@ import Header from "./Header"
 
 function App() {
 
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  console.log("App auth: ", isAuth);
+  const { isAuth, setIsAuth, currentUser } = useContext(AuthContext);
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route

@@ -12,12 +12,29 @@ const isAuthenticated = require('../config/middleware/isAuthenticated');
 //   })
 // })
 //Route to put brewery to crawl.
+
+router.get('/api/user/getUser', isAuthenticated, function (req, res) {
+  db.User.findOne({
+    where: {
+      id: req.user.id
+    }
+  }).then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 router.post('/api/user/brewery', isAuthenticated, function (req, res) {
   console.log(req.body)
   db.Brewery.create({
     Name: req.body.name,
     Street: req.body.street,
     Postal_Code: req.body.postal_code,
+    Latitude: req.body.latitude,
+    Longitude: req.body.longitude,
+    Brewery_type: req.body.brewry_type,
     UserId: req.user.id
   }).then(function (results) {
     res.json(results)
@@ -48,6 +65,7 @@ router.delete('/api/user/brewery/:id', isAuthenticated, function (req, res) {
     console.log(req);
     res.json(req.user);
   });
+
   router.post('/signup', (req, res) => {
     db.User.create({
       first_name: req.body.first_name,
@@ -63,10 +81,12 @@ router.delete('/api/user/brewery/:id', isAuthenticated, function (req, res) {
         res.json(err);
       });
   });
+
   router.get('/logout', (req, res) => {
     req.logout();
     res.json('logout successful');
   });
+
   router.get('/user_data', (req, res) => {
     if (!req.user) {
       res.json({});
@@ -80,4 +100,9 @@ router.delete('/api/user/brewery/:id', isAuthenticated, function (req, res) {
   router.get('/secrets', isAuthenticated, (req, res) => {
     res.json('if you see this, the user is authenticated via a check in /config/middleware/isAuthenticated');
   });
+
+
+
+
+
   module.exports = router
