@@ -6,6 +6,11 @@
 ## Introduction
 
 <p>Welcome to Brew Hopper, The app that lets you plan a brewery crawl by searching your city or a city you want to visit.  Just sign up, Login, search a city and let Brew Hopper do the rest!<p>
+<p>Brew Hopper utilizes the Open Brewery DB API to find a brewery near you!<p>
+
+<img src="https://user-images.githubusercontent.com/50189621/112074199-c5a61e00-8b43-11eb-8b15-4708fdfa663c.png" width="750" height="600">
+
+<img src="https://user-images.githubusercontent.com/50189621/112072790-99d56900-8b40-11eb-8519-4bf9f54ae2ea.png" width="750" height="400">
 
 ## Deployed Application
 
